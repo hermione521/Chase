@@ -82,25 +82,28 @@ Chase.start = function() {
 };
 
 // Chase.gameStepTime = 1000;
-Chase.gameStepTime = 500;
+Chase.gameStepTime = 200;
  
 Chase.frameTime = 0; // ms
 Chase.cumulatedFrameTime = 0; // ms
 Chase._lastFrameTime = Date.now(); // timestamp
 
 Chase.gameOver = false;
-Chase.collected = [0, 0, 0, 0, 0];
 Chase.currentPoints = 0;
+Chase.collected = [];
+for (var i = 0; i < 10; ++i) {
+	Chase.collected.push(0);
+}
 
 Chase.animate = function() {
 	var time = Date.now();
 	Chase.frameTime = time - Chase._lastFrameTime;
 	Chase._lastFrameTime = time;
 	Chase.cumulatedFrameTime += Chase.frameTime;
-	Chase.setPoint(1);
 
 	while(Chase.cumulatedFrameTime > Chase.gameStepTime) {
 		Chase.cumulatedFrameTime -= Chase.gameStepTime;
+		Chase.setPoint(-1);
 
 		// moving all blocks nearer (z=14 visible, z=15 invisible)
 		for (var x = 3; x >= 0; x--){
@@ -189,50 +192,51 @@ Chase.addStaticBlock = function(x, y, num) {
 	Chase.staticBlocks[x][y][z] = MovingCube;
 };
 
+var goodEvent = ['帮忙签到', '给好吃的', '送回寝室', '促膝谈心', '帮刷早锻'];
+var badEvent = ['不修边幅', '不回短信', '见面失约', '搭讪他人', '叫错名字'];
 Chase.setPoint = function(n) {
 	Chase.currentPoints += n;
 	document.getElementById("points").innerHTML = "<h1>" + Chase.currentPoints + "</h1>";
 }
-Chase.setCollected = function() {
-	var goodEvent = ['帮忙签到', '给好吃的', '送回寝室', '促膝谈心', '帮刷早锻'];
-	var str = '';
-	for (var i = 0; i < 5; ++i) {
-		str += goodEvent[i] + ' ' + Chase.collected[i] + '/3<br/>';
-	}
-	document.getElementById("collected").innerHTML = str;
-}
 Chase.setEvent = function(evt) {
-	var badEvent = ['不修边幅', '不回短信', '见面失约', '搭讪他人', '叫错名字'];
-	if (evt < 5) {
+	if (evt >= 0) {
 		++Chase.collected[evt];
-		Chase.setCollected();
-
-		var collectedNum = 0;
-		for (var i = 0; i < 5; ++i) {
-			if (Chase.collected[i] >= 3) {
-				++collectedNum;
-			}
-		}
-		if (collectedNum === 5) {
-			Chase.gameOver = true;
-			document.getElementById("you-win").style.display = "block";
-			document.getElementById("red").innerText = Chase.currentPoints + '';
-			Chase.sounds["win"].play();
-		}
-		else {
-			Chase.sounds["score"].play();
-		}	
 	}
-	else {
+	if (evt >= 0 && evt < 5) {
+		var addPoint = Math.floor(100 / Math.sqrt(Chase.collected[evt]));
+		Chase.setPoint(addPoint);
+
 		var popup = document.getElementById("popup");
-		popup.innerText = badEvent[evt - 5] + ' +100小时 :(';
+		popup.innerText = goodEvent[evt] + ' +' + addPoint + ' :)';
 		popup.style.display = "block";
 		setTimeout(function(){
 			document.getElementById("popup").style.display = "none";
 		}, 1000);
 
-		Chase.setPoint(100);
+		Chase.sounds["score"].play();
+	}
+	else if (evt >= 5) {
+		var addPoint = Chase.collected[evt] * 10;
+		Chase.setPoint(-addPoint);
+
+		var popup = document.getElementById("popup");
+		popup.innerText = badEvent[evt - 5] + ' -' + addPoint + ' :(';
+		popup.style.display = "block";
+		setTimeout(function(){
+			document.getElementById("popup").style.display = "none";
+		}, 1000);
+
 		Chase.sounds["bad"].play();
+	}
+	
+	if (Chase.currentPoints >= 1500) {
+		Chase.gameOver = true;
+		document.getElementById("you-win").style.display = "block";
+		Chase.sounds["win"].play();
+	}
+	if (Chase.currentPoints <= -200) {
+		Chase.gameOver = true;
+		document.getElementById("you-lose").style.display = "block";
 	}
 }
 

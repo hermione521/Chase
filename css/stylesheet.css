@@ -143,9 +143,25 @@ body{
 		documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
 		document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
 }
-#you-win #result {
-	font-size: 60px;
-}
-#you-win #result #red {
-	color: red;
+
+#you-lose{
+	color: orange;
+	font-size: 250px;
+	text-align: center;
+	display: none;
+
+	background-color: #000;
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;/*FF IE7*/
+	filter:alpha(opacity=40);/*IE*/
+	opacity:0.4;/*FF*/
+	z-index:1;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+	_top: expression(eval(document.compatMode &&
+		document.compatMode=='CSS1Compat') ?
+		documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+		document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
 }
