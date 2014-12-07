@@ -229,7 +229,7 @@ Chase.setEvent = function(evt) {
 		Chase.sounds["bad"].play();
 	}
 	
-	if (Chase.currentPoints >= 1500) {
+	if (Chase.currentPoints >= 1000) {
 		Chase.gameOver = true;
 		document.getElementById("you-win").style.display = "block";
 		Chase.sounds["win"].play();
