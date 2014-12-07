@@ -202,6 +202,7 @@ Chase.setCollected = function() {
 	document.getElementById("collected").innerHTML = str;
 }
 Chase.setEvent = function(evt) {
+	var badEvent = ['不修边幅', '不回短信', '见面失约', '搭讪他人', '叫错名字'];
 	if (evt < 5) {
 		++Chase.collected[evt];
 		Chase.setCollected();
@@ -215,6 +216,7 @@ Chase.setEvent = function(evt) {
 		if (collectedNum === 5) {
 			Chase.gameOver = true;
 			document.getElementById("you-win").style.display = "block";
+			document.getElementById("red").innerText = Chase.currentPoints + '';
 			Chase.sounds["win"].play();
 		}
 		else {
@@ -222,6 +224,13 @@ Chase.setEvent = function(evt) {
 		}	
 	}
 	else {
+		var popup = document.getElementById("popup");
+		popup.innerText = badEvent[evt - 5] + ' +100小时 :(';
+		popup.style.display = "block";
+		setTimeout(function(){
+			document.getElementById("popup").style.display = "none";
+		}, 1000);
+
 		Chase.setPoint(100);
 		Chase.sounds["bad"].play();
 	}

@@ -74,6 +74,23 @@ body{
 	display: none;
 }
 
+#popup{
+	position: absolute;
+	width: 100px;
+	height: 90px;   
+
+	margin-top: 3px;
+
+	top: 140px;
+	right: 60px; 
+
+	font-size: 20px;
+	font-weight: bold;
+	color: blue;
+
+	display: block;
+}
+
 #points h1{
 	font-size: 40px;
 }
@@ -125,4 +142,10 @@ body{
 		document.compatMode=='CSS1Compat') ?
 		documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
 		document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+#you-win #result {
+	font-size: 60px;
+}
+#you-win #result #red {
+	color: red;
 }
