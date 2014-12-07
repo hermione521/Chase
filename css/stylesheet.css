@@ -81,17 +81,20 @@ body{
 
 #popup{
 	position: absolute;
-	width: 100px;
-	height: 90px;   
+	width: 200px;
+	height: 90px;
+	text-align: right;
 
 	margin-top: 3px;
 
-	top: 140px;
-	right: 60px; 
+	top: 20px;
+	left: calc(50% - 100px);
+	left: -moz-calc(50% - 100px);
+	left: -webkit-calc(50% - 100px);
 
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: bold;
-	color: blue;
+	color: #0e419c;
 
 	display: block;
 }
