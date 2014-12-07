@@ -76,7 +76,6 @@ Chase.init = function() {
 Chase.start = function() {
 	document.getElementById("menu").style.display = "none";
 	document.getElementById("points").style.display = "block";
-	document.getElementById("collected").style.display = "block";
 
 	Chase.animate();
 };
@@ -104,6 +103,7 @@ Chase.animate = function() {
 	while(Chase.cumulatedFrameTime > Chase.gameStepTime) {
 		Chase.cumulatedFrameTime -= Chase.gameStepTime;
 		Chase.setPoint(-1);
+		Chase.setEvent(-1);
 
 		// moving all blocks nearer (z=14 visible, z=15 invisible)
 		for (var x = 3; x >= 0; x--){
