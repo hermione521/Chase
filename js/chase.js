@@ -73,13 +73,6 @@ Chase.init = function() {
 	});
 };
 
-Chase.start = function() {
-	document.getElementById("menu").style.display = "none";
-	document.getElementById("points").style.display = "block";
-
-	Chase.animate();
-};
-
 // Chase.gameStepTime = 1000;
 Chase.gameStepTime = 200;
  
@@ -93,6 +86,26 @@ Chase.collected = [];
 for (var i = 0; i < 10; ++i) {
 	Chase.collected.push(0);
 }
+
+Chase.start = function() {
+	document.getElementById("menu").style.display = "none";
+	document.getElementById("points").style.display = "block";
+
+	Chase.gameStepTime = 200;
+ 
+	Chase.frameTime = 0; // ms
+	Chase.cumulatedFrameTime = 0; // ms
+	Chase._lastFrameTime = Date.now(); // timestamp
+
+	Chase.gameOver = false;
+	Chase.currentPoints = 0;
+	Chase.collected = [];
+	for (var i = 0; i < 10; ++i) {
+		Chase.collected.push(0);
+	}
+
+	Chase.animate();
+};
 
 Chase.animate = function() {
 	var time = Date.now();
