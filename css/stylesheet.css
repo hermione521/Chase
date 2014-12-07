@@ -8,13 +8,14 @@ body{
 #menu{
 	position: absolute;
 	width: 270px;
-	height: 270px;
+	height: 250px;
 
 	top: 50%;
 	left: 50%;
 	margin: -135px 0 0 -125px;
 
 	text-align: center;
+	line-height: 18px;
 
 	border: 3px solid #bbada0;
 	border-radius: 15px;
@@ -94,6 +95,7 @@ body{
 	box-shadow: 2px 10px 5px #888;  
 
 	font-size: 20px;
+	line-height: 22px;
 	font-weight: bold;
 	color: #f65e3b;
 
@@ -101,10 +103,6 @@ body{
 	vertical-align: middle;
 
 	display: none;
-}
-
-#collected h1{
-	font-size: 20px;
 }
 
 #you-win{
