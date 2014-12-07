@@ -1,8 +1,8 @@
-# Flying 2048
+# Chase
 
-Play it [here](http://hermione521.github.io/Flying-2048)!
+Play it [here](http://hermione521.github.io/Chase)!
 
-This is a homework of Advanced Web Technology course, implemented using three.js
+This is a web game for Google Female Hackthon, implemented using three.js
 
 Fridek has a simple [tutorial](https://github.com/fridek/Threejs-Tetris-Tutorial) for three.js. And Taira Komori provides some useful free sound effect [here](http://taira-komori.jpn.org/freesounden.html).
 
