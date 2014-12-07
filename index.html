@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Flying 2048</title>
+		<title>Chase</title>
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	</head>
@@ -11,9 +11,9 @@
 		<audio id="audio_win" src="music/win.mp3" preload="auto"></audio>
 		<audio id="audio_move" src="music/move.mp3" preload="auto"></audio>
 		<div id="menu">
-			<h1>Flying 2048</h1>
+			<h1>Chase</h1>
 			<p>
-				Aim: 2 + 2 + 4 + 8 + ... + 2048<br />
+				Aim: collect RIGHT items to find your true love.<br />
 				Movement: arrows<br />
 				Author: <a href="http://github.com/hermione521">Gan Yue</a><br />
 				Supported by: <a href="http://threejs.org/">Three.js</a><br />
@@ -26,12 +26,19 @@
 		<div id="points">
 			<h1>0</h1>
 		</div>
+		<div id="collected">
+			帮忙签到 0/3<br/>
+			给好吃的 0/3<br/>
+			送回寝室 0/3<br/>
+			促膝谈心 0/3<br/>
+			帮刷早锻 0/3
+		</div>
 
 		<div id="you-win">
 			You Win!
 		</div>
 
 		<script type="text/javascript" src="js/three.min.js"></script>
-		<script type="text/javascript" src="js/flying2048.js"></script>
+		<script type="text/javascript" src="js/chase.js"></script>
 	</body>
 </html>
