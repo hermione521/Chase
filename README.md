@@ -1,6 +1,6 @@
 # Chase
 
-Play it [here](http://hermione521.github.io/Chase)!
+Play it [here](http://hermione521.github.io/Chase/index.html)!
 
 This is a web game for Google Female Hackthon, implemented using three.js
 
